@@ -1,0 +1,20 @@
+{
+  "name": "nomad-coffee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "dev": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinsunkimdev/nomadcoffee-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinsunkimdev/nomadcoffee-backend/issues"
+  },
+  "homepage": "https://github.com/jinsunkimdev/nomadcoffee-backend#readme"
+}

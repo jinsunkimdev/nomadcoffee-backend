@@ -16,6 +16,7 @@ export default {
         avatarURL,
       }
     ) => {
+      try {
         const existingUser = await client.user.findFirst({
           where: {
             OR: [
@@ -28,8 +29,14 @@ export default {
             ],
           },
         });
+        if(existingUser){
+          throw Error(
+            "Username/Email already exist"
+          )// throw error message
+        }
+
         const uglyPassword = await bcrypt.hash(password, 10);
-        const createAccount =await client.user.create({
+        const createAccount = await client.user.create({
           data: {
             username,
             email,
@@ -41,16 +48,16 @@ export default {
             avatarURL,
           },
         });
-        if (existingUser) {
-          return {
-            ok: false,
-            error: "Existing username/email",
-          }
-        }else{
-          return{
-            ok: true
-          }
-        }
+        // return CreateAccountResult to ok and error 
+        return {
+          ok: true,
+        };
+      } catch (e) {
+        return {
+          ok: false,
+          error: e.message,
+        };
+      }
     },
   },
 };

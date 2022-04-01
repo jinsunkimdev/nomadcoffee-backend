@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import client from "../client";
+import client from "../../client";
 
 export default {
   Mutation: {
@@ -29,10 +29,8 @@ export default {
             ],
           },
         });
-        if(existingUser){
-          throw Error(
-            "Username/Email already exist"
-          )// throw error message
+        if (existingUser) {
+          throw Error("Username/Email already taken 😅"); // throw error message
         }
 
         const uglyPassword = await bcrypt.hash(password, 10);
@@ -48,7 +46,7 @@ export default {
             avatarURL,
           },
         });
-        // return CreateAccountResult to ok and error 
+        // return CreateAccountResult to ok and error
         return {
           ok: true,
         };
